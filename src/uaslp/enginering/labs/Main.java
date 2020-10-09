@@ -6,7 +6,7 @@ import java.time.Month;
 public class Main {
 
     public static void main(String[] args) {
-        Integer[] datos = {3, 2, 6, 3, 1, 8, 5, 4};
+/*        Integer[] datos = {3, 2, 6, 3, 1, 8, 5, 4};
 
         sort(datos, new IntegerAscendantComparator());
 
@@ -24,7 +24,7 @@ public class Main {
 
         System.out.println();
 
-        String[] nombres = {"Hector", "Jocelyn", "Antonio", "Caleb", "Isaías", "José", "Gustavo", "Alain", "Ivan"};
+        String[] nombres = {"Hector", "Antonio", "Antonio", "Caleb", "Isaías", "José", "Gustavo", "Alain", "Ivan"};
 
         sort(nombres, new StringAscendantComparator());
 
@@ -39,6 +39,7 @@ public class Main {
         for (String dato : nombres) {
             System.out.print(dato + ", ");
         }
+        */
 
         Alumno alumnos[] = {
                 new Alumno("Hector", "Hernandez", LocalDate.of(2001, Month.AUGUST, 11), 4723717),
@@ -53,7 +54,29 @@ public class Main {
 
         // Ordenar los alumnos por lastName y firstName e imprimir
 
+        System.out.println("---------------------------------------------------------------------");
+
+        sort(alumnos,new AlumnoAscendantCompare());
+        for (Alumno alumno : alumnos) {
+            System.out.println(alumno.getLastName() + " " + alumno.getFirstName());
+
+        }
         // Ordenar por mes de nacimiento y por clave e imprimir
+
+        System.out.println("---------------------------------------------------------------------");
+
+       sort(alumnos,new MonthComparator());
+        for (Alumno alumno : alumnos) {
+            System.out.println(alumno.getFirstName() + "--" + alumno.getBirthday().getMonth());
+
+        }
+
+        System.out.println("---------------------------------------------------------------------");
+        sort(alumnos,new KeyComparator());
+        for (Alumno alumno : alumnos) {
+            System.out.println(  alumno.getClave()+ "---" + alumno.getFirstName());
+
+        }
     }
 
     private static void sort(Object[] datos, Comparator comparator) {
@@ -69,4 +92,5 @@ public class Main {
             }
         }
     }
+
 }
